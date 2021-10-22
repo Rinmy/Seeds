@@ -1,0 +1,19 @@
+version: "3"
+
+services:
+  seeds:
+    build:
+      context: ./
+      dockerfile: Dockerfile
+    image: seeds
+    container_name: seeds
+    tty: true
+    environment:
+      NODE_PATH: /usr/local/lib/node_modules
+      TZ: Asia/Tokyo
+    stdin_open: true
+    #restart: always
+    working_dir: /seeds/
+    volumes:
+      - ./src/:/seeds/
+    command: node discord.js
